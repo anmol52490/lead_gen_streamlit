@@ -38,7 +38,7 @@ Founders:
     if profile_type == "user":
         username = profile_url.split("/in/")[-1].strip("/")
         api_data = processor.fetch_linkedin_data(username)
-        if not api_data or "data" not in api_data:
+        if not api_data or not isinstance(api_data, dict) or "data" not in api_data:
             return None, f"Invalid or empty data for user: {username}"
 
         inputs = processor.extract_fields(api_data)
@@ -49,10 +49,10 @@ Founders:
         company_id = profile_url.split("/company/")[-1].strip("/")
         details = processor.fetch_company_details(company_id)
         posts = processor.fetch_company_posts(company_id)
-        if not details or not posts:
-            return None, f"Missing data for company: {company_id}"
+        if not api_data or not isinstance(api_data, dict) or "data" not in api_data:
+            return None, f"Invalid or empty data for user: {username}"
 
-        inputs = processor.extract_fields1(details, posts)
+        inputs = processor.extract_fields1(api_data)
         inputs["hidevs_vision"] = HIDEVS_VISION
         result = processor1.crew().kickoff(inputs=inputs)
 

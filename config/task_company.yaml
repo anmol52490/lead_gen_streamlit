@@ -1,0 +1,66 @@
+analyze_company_activity:
+  description: |
+    Evaluate the company's activity based on its 10 most recent LinkedIn posts:
+    
+    - Post Dates: {post_dates}
+    - Engagement: {post_engagements}
+    - Media Attachments: {media_images}
+
+    Based on frequency, consistency, and interaction level, assign a score from 1 to 10:
+      - 1-3: Inactive
+      - 4-7: Moderately active
+      - 8-10: Very active
+
+    Return only the score.
+  expected_output: Integer between 1–10
+  agent: company_activity_analyser
+  
+
+summarize_company_profile:
+  description: |
+    Use the following structured data to write a concise professional summary (3–5 sentences) of the company:
+
+    - Name: {company_name}
+    - Description: {company_description}
+    - Tagline: {company_tagline}
+    - Type: {company_type}
+    - Industries: {industries}
+    - Specialities: {specialities}
+    - Staff Count: {staff_count}
+
+    The summary should describe what the company does, its positioning in the tech world, and its potential significance.
+  expected_output: Company summary paragraph
+  agent: company_profile_summarizer
+  
+
+analyze_company_content:
+  description: |
+    Based on the following data:
+    - Post Content: {company_posts}
+    - Post Links: {post_links}
+
+    Analyze:
+    1. Key topics and technologies featured
+    2. Message tone (formal, technical, casual, etc.)
+    3. Brand focus and communication strategy
+
+    Return a short paragraph (3–5 sentences) summarizing your findings.
+  expected_output: Company content strategy paragraph
+  agent: company_content_analyst
+  
+
+align_with_hidevs_vision:
+  description: |
+    Assess how well the company aligns with the HiDevs platform based on:
+
+    - Vision: {hidevs_vision}
+    - Company Description: {company_description}
+    - Tagline: {company_tagline}
+    - Specialities: {specialities}
+    - Post Themes: {company_posts}
+    - Industries: {industries}
+
+    Return a score (1–10) and explanation in the format:
+    "Score - Explanation of strategic alignment"
+  expected_output: Score + justification string
+  agent: company_vision_aligner

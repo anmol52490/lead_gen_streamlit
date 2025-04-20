@@ -1,0 +1,72 @@
+analyze_activity:
+  description: |
+    Analyze the first 10 posts from the user's LinkedIn profile to determine their activity level.
+    You will receive a JSON array of posts which includes posting dates.
+    
+    Based on frequency and recency of posts, assign an activity score from 1-10, where:
+    - 1-3: Low activity (infrequent posting, long gaps between posts)
+    - 4-7: Medium activity (moderate posting, some consistency)
+    - 8-10: High activity (frequent posting, high consistency)
+    
+    Posts JSON: {post_times}
+    
+    Don't explain your reasoning - just return a single integer between 1-10.
+  expected_output: Integer between 1-10
+  agent: activity_analyser
+  output_file: output/activity_Score.txt
+
+summarize_profile:
+  description: |
+    Create a professional summary based on the user's LinkedIn profile data.
+    
+    Use the following information to create a 3-4 sentence professional summary:
+    - Summary: {summary}
+    - Education: {educations_data}
+    - Positions: {positions_data}
+    - Skills: {skills_data}
+    - Headline: {headline}
+    
+    Focus on the person's professional identity, expertise, experience, and unique value.
+    Return only the summary text with no explanations.
+  expected_output: 3-4 sentence professional summary  
+  agent: profile_summarizer
+  output_file: output/profile_Summary.txt
+
+analyze_content:
+  description: |
+    Analyze the content of the first 10 posts from the user's LinkedIn profile.
+    Posts are provided as a JSON array: {posts_data}
+    
+    Identify:
+    1. Main topics/themes discussed
+    2. Professional interests indicated
+    3. Technologies, industries, or skills mentioned
+    
+    Write a short paragraph (3-5 sentences) summarizing what the content reveals about
+    the user's professional focus and interests. Return only the summary text.
+  expected_output: Short paragraph summarizing content focus
+  agent: content_analyst
+  output_file: output/content_Analyse.txt
+
+assess_alignment:
+  description: |
+    Evaluate how well the user's profile aligns with the HiDevs platform vision.
+    
+    Consider:
+    - HiDevs platform vision: {hidevs_vision}
+    - Additional profile data:
+      - Posts: {posts_data}
+      - Summary: {summary}
+      - Education: {educations_data}
+      - Headline: {headline}
+      - Positions: {positions_data}
+      - Educations: {educations_data}
+    
+    Provide an alignment score from 1-10 (where 10 is perfect alignment) 
+    followed by a brief explanation (2-3 sentences).
+    
+    Format your response as: "X - explanation"
+    where X is the numeric score and explanation justifies the score.
+  expected_output: Alignment score (1-10) with justification
+  agent: vision_aligner
+  output_file: output/alignment_score.txt

@@ -2,9 +2,6 @@
 
 import streamlit as st
 from main import analyze_lead
-import sys
-import pysqlite3
-sys.modules["sqlite3"] = pysqlite3
 
 
 st.set_page_config(page_title="LinkedIn Lead Analyzer", layout="centered")

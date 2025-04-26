@@ -13,7 +13,6 @@ analyze_activity:
     Don't explain your reasoning - just return a single integer between 1-10.
   expected_output: Integer between 1-10
   agent: activity_analyser
-  output_file: output/activity_Score.txt
 
 summarize_profile:
   description: |
@@ -30,7 +29,6 @@ summarize_profile:
     Return only the summary text with no explanations.
   expected_output: 3-4 sentence professional summary  
   agent: profile_summarizer
-  output_file: output/profile_Summary.txt
 
 analyze_content:
   description: |
@@ -46,7 +44,7 @@ analyze_content:
     the user's professional focus and interests. Return only the summary text.
   expected_output: Short paragraph summarizing content focus
   agent: content_analyst
-  output_file: output/content_Analyse.txt
+
 
 assess_alignment:
   description: |
@@ -69,4 +67,3 @@ assess_alignment:
     where X is the numeric score and explanation justifies the score.
   expected_output: Alignment score (1-10) with justification
   agent: vision_aligner
-  output_file: output/alignment_score.txt

@@ -47,12 +47,14 @@ Founders:
 
     elif profile_type == "company":
         company_id = profile_url.split("/company/")[-1].strip("/")
-        details = processor.fetch_company_details(company_id)
-        posts = processor.fetch_company_posts(company_id)
-        if not api_data or not isinstance(api_data, dict) or "data" not in api_data:
+        company_details = processor.fetch_company_details(company_id)
+        company_post = processor.fetch_company_posts(company_id)
+        if not company_details or not company_post:
             return None, f"Invalid or empty data for user: {username}"
+        #if not api_data or not isinstance(api_data, dict) or "data" not in api_data:
+            
 
-        inputs = processor.extract_fields1(api_data)
+        inputs = processor.extract_fields1(company_details, company_post)
         inputs["hidevs_vision"] = HIDEVS_VISION
         result = processor1.crew().kickoff(inputs=inputs)
 

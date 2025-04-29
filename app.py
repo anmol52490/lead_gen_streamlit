@@ -39,7 +39,7 @@ else:
         with col2:
             profile_url = st.text_input("LinkedIn Profile URL", key=f"url_{i}")
         with col3:
-            analyse_type = st.selectbox("Analyze Type", ["HiDevs community", "Investor","Events", "Mentorship Potential", "Hiring Potential", "Partnering Potential"], key=f"analyze_{i}")
+            analyse_type = st.selectbox("Analyze Type", ["HiDevs community", "Investor","Events", "Mentorship Potential", "Hiring Potential", "Partnering Potential","Corporate Workshop"], key=f"analyze_{i}")
         inputs.append({"type": profile_type, "url": profile_url,
                        "analyzse_type": analyse_type})
 

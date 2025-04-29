@@ -9,7 +9,8 @@ def analyze_lead(profile_type: str, profile_url: str,analyze_type: str) -> tuple
     "Events": "Analyze if the user is likely to attend or actively participate in HiDevs-organized workshops, conferences, and other events.",
     "Mentorship Potential": "Evaluate if the user has the experience, skills, and willingness to mentor students and early-career professionals in AI fields.",
     "Hiring Potential": "Assess whether the user has the authority, background, or intent to recruit HiDevs-trained talent for organizations.",
-    "Partnering Potential": "Analyze if the user or their organization is a good fit for strategic partnerships or collaborations with HiDevs."
+    "Partnering Potential": "Analyze if the user or their organization is a good fit for strategic partnerships or collaborations with HiDevs.",
+    "Corporate Workshop": "Analyse if the user, through their role or influence, could facilitate organizing a corporate AI upskilling workshop within HiDevs company or team."
 }
     HIDEVS_VISION= """
 HiDevs is a community-driven AI upskilling platform focused on building the next generation of talent in Generative AI and related technologies. Its core mission is to empower individuals—especially students and early-career engineers—through personalized learning paths, real-world projects, and industry mentorship to ensure successful transitions from academia to industry.

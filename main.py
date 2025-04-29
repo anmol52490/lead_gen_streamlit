@@ -1,8 +1,16 @@
 from src.lead_flow.crews.lead_gen import LeadGen
 from src.lead_flow.crews.company_lead_gen import CompanyLeadGen
-def analyze_lead(profile_type: str, profile_url: str):
+def analyze_lead(profile_type: str, profile_url: str,analyze_type: str) -> tuple:
     processor = LeadGen()
     processor1 = CompanyLeadGen()
+    ANALYZE_DESCRIPTIONS = {
+    "HiDevs community": "Evaluate how strongly the user's background and interests align with HiDevs' mission to upskill and develop AI talent.",
+    "Investor": "Assess the user's likelihood of being interested in investing in an AI-focused upskilling platform like HiDevs.",
+    "Events": "Analyze if the user is likely to attend or actively participate in HiDevs-organized workshops, conferences, and other events.",
+    "Mentorship Potential": "Evaluate if the user has the experience, skills, and willingness to mentor students and early-career professionals in AI fields.",
+    "Hiring Potential": "Assess whether the user has the authority, background, or intent to recruit HiDevs-trained talent for organizations.",
+    "Partnering Potential": "Analyze if the user or their organization is a good fit for strategic partnerships or collaborations with HiDevs."
+}
     HIDEVS_VISION= """
 HiDevs is a community-driven AI upskilling platform focused on building the next generation of talent in Generative AI and related technologies. Its core mission is to empower individuals—especially students and early-career engineers—through personalized learning paths, real-world projects, and industry mentorship to ensure successful transitions from academia to industry.
 
@@ -43,6 +51,7 @@ Founders:
 
         inputs = processor.extract_fields(api_data)
         inputs["hidevs_vision"] = HIDEVS_VISION
+        inputs["analyse"]= ANALYZE_DESCRIPTIONS.get(analyze_type, "")
         result = processor.crew().kickoff(inputs=inputs)
 
     elif profile_type == "company":
@@ -53,8 +62,9 @@ Founders:
             return None, f"Invalid or empty data for user: {username}"
         #if not api_data or not isinstance(api_data, dict) or "data" not in api_data:
             
-
+        
         inputs = processor.extract_fields1(company_details, company_post)
+        inputs["analyse"]= ANALYZE_DESCRIPTIONS.get(analyze_type, "")
         inputs["hidevs_vision"] = HIDEVS_VISION
         result = processor1.crew().kickoff(inputs=inputs)
 

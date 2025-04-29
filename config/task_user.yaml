@@ -48,22 +48,20 @@ analyze_content:
 
 assess_alignment:
   description: |
-    Evaluate how well the user's profile aligns with the HiDevs platform vision.
+    Evaluate the user's potential based on the specific type of analysis to be done ({analyse}).
     
-    Consider:
-    - HiDevs platform vision: {hidevs_vision}
-    - Additional profile data:
-      - Posts: {posts_data}
-      - Summary: {summary}
-      - Education: {educations_data}
-      - Headline: {headline}
-      - Positions: {positions_data}
-      - Educations: {educations_data}
+    Consider the user's profile data:
+    - Posts: {posts_data}
+    - Summary: {summary}
+    - Education: {educations_data}
+    - Headline: {headline}
+    - Positions: {positions_data}
+    - Skills: {skills_data}
+    - HiDevs vision: {hidevs_vision}
     
-    Provide an alignment score from 1-10 (where 10 is perfect alignment) 
-    followed by a brief explanation (2-3 sentences).
-    
+    Provide a score between 1-10 where 10 indicates very strong potential for the requested analysis type. 
+    Include a 2-3 sentence justification.
+
     Format your response as: "X - explanation"
-    where X is the numeric score and explanation justifies the score.
-  expected_output: Alignment score (1-10) with justification
-  agent: vision_aligner
+  expected_output: Score (1-10) and short explanation
+  agent: strategic_analyzer

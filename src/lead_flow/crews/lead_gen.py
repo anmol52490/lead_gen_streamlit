@@ -1,5 +1,3 @@
-# Updated lead_gen.py with GCP-Safe Caching
-
 from crewai import Agent, Crew, Process, Task, LLM
 from crewai.project import CrewBase, agent, crew, task
 from src.lead_flow.typesx import Activity_Analyser, Profile_Analyser, Content_Analyst, Alignment
@@ -41,8 +39,8 @@ class LeadGen():
         return Agent(config=self.agents_config['content_analyst'], llm=gemini_llm)
 
     @agent
-    def vision_aligner(self) -> Agent:
-        return Agent(config=self.agents_config['vision_aligner'], llm=gemini_llm)
+    def strategic_analyzer(self) -> Agent:
+        return Agent(config=self.agents_config['strategic_analyzer'], llm=gemini_llm)
 
     @task
     def analyze_activity_task(self) -> Task:
@@ -57,7 +55,7 @@ class LeadGen():
         return Task(config=self.tasks_config['analyze_content'], output_pydantic=Content_Analyst)
 
     @task
-    def assess_alignment_task(self) -> Task:
+    def assess_alignment(self) -> Task:
         return Task(config=self.tasks_config['assess_alignment'], output_pydantic=Alignment)
 
     @crew

@@ -48,19 +48,21 @@ analyze_company_content:
   expected_output: Company content strategy paragraph
   agent: company_content_analyst
   
-
-align_with_hidevs_vision:
+assess_alignment:
   description: |
-    Assess how well the company aligns with the HiDevs platform based on:
-
+    Evaluate the company's potential based on the specific type of analysis to be done ({analyse}).
+    
+    Consider the company's profile data:
     - Vision: {hidevs_vision}
     - Company Description: {company_description}
     - Tagline: {company_tagline}
     - Specialities: {specialities}
     - Post Themes: {company_posts}
     - Industries: {industries}
+    
+    Provide a score between 1-10 where 10 indicates very strong potential for the requested analysis type. 
+    Include a 2-3 sentence justification.
 
-    Return a score (1–10) and explanation in the format:
-    "Score - Explanation of strategic alignment"
-  expected_output: Score + justification string
-  agent: company_vision_aligner
+    Format your response as: "X - explanation"
+  expected_output: Score (1-10) and short explanation
+  agent: strategic_analyzer

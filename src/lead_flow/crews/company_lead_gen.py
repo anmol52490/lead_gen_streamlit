@@ -47,9 +47,9 @@ class CompanyLeadGen():
             verbose=True,llm=gemini_llm,
         )
     @agent
-    def company_vision_aligner(self) -> Agent:
+    def strategic_analyzer(self) -> Agent:
         return Agent(
-            config=self.agents_config['company_vision_aligner'],
+            config=self.agents_config['strategic_analyzer'],
             verbose=True,llm=gemini_llm,
         )
     # To learn more about structured task outputs,
@@ -77,9 +77,9 @@ class CompanyLeadGen():
             
         )
     @task
-    def align_with_hidevs_vision(self) -> Task:
+    def assess_alignment(self) -> Task:
         return Task(
-            config=self.tasks_config['align_with_hidevs_vision'],
+            config=self.tasks_config['assess_alignment'],
             output_pydantic=Alignment,
             
         )
